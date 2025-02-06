@@ -1,0 +1,15 @@
+zitadel:
+  database:
+    postgres:
+      port: 5432
+      database: zitadel
+      user:
+        username: zitadel
+        password: zitadel
+        sslMode: disable
+      admin:
+        username: postgres
+        password: postgres
+        sslMode: disable
+  externalSecure: false
+
