@@ -5,9 +5,9 @@ services:
       context: https://github.com/nutrixpos/posui.git#v0.0.7
       dockerfile: Dockerfile
       args:
-        VUE_APP_ZITADEL_ISSUER: ${VUE_APP_ZITADEL_ISSUER}
-        VUE_APP_BACKEND_HOST: ${VUE_APP_BACKEND_HOST}
-        VUE_APP_MODULE_CORE_API_PREFIX: ${VUE_APP_MODULE_CORE_API_PREFIX}
+        VUE_APP_ZITADEL_ISSUER: http://zitadel:8080
+        VUE_APP_BACKEND_HOST: localhost:8000
+        VUE_APP_MODULE_CORE_API_PREFIX: /core
         VUE_APP_ZITADEL_PROJECT_RESOURCE_ID: ${VUE_APP_ZITADEL_PROJECT_RESOURCE_ID}
         VUE_APP_ZITADEL_CLIENT_ID: ${VUE_APP_ZITADEL_CLIENT_ID}
 
