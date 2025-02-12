@@ -2,7 +2,7 @@ services:
 
   posui:
     build:
-      context: https://github.com/nutrixpos/posui.git#v0.0.7
+      context: https://github.com/nutrixpos/posui.git#latest
       dockerfile: Dockerfile
       args:
         VUE_APP_ZITADEL_ISSUER: http://zitadel:8080
@@ -20,7 +20,7 @@ services:
 
   pos:
     build:
-      context: https://github.com/nutrixpos/pos.git#v0.0.13
+      context: https://github.com/nutrixpos/pos.git#latest
       dockerfile: Dockerfile  # Specify the Dockerfile if it's not named 'Dockerfile'
     ports:
       - "8000:8000"  # Map ports accordingly
@@ -54,6 +54,9 @@ services:
       timeout: '30s'
       retries: 5
       start_period: '20s'
+    
+    ports:
+      - 27017:27017
 
   zitadel:
     restart: 'always'
