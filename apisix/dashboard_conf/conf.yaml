@@ -20,6 +20,9 @@ plugins:
   - openid-connect
   - cors
   - jwt-auth
+  - proxy-rewrite
+  - serverless-pre-function
+  - serverless-post-function
 
 conf:
   listen:
