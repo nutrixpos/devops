@@ -2,3 +2,4 @@ data
 pos_mnt
 .env
 apisix/apisix_log
+apisix/etcd_data
