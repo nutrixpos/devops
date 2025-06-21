@@ -22,6 +22,7 @@ plugins:                         # Enabled plugins
   - zipkin
   - http-logger
   - node-status
+  - openid-connect
 
 
 plugin_attr:
