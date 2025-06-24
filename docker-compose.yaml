@@ -21,7 +21,7 @@ services:
 
   pos:
     build:
-      context: https://github.com/nutrixpos/pos.git#v0.0.25
+      context: https://github.com/nutrixpos/pos.git#v0.0.26
       dockerfile: Dockerfile  # Specify the Dockerfile if it's not named 'Dockerfile'
     ports:
       - "8000:8000"  # Map ports accordingly
