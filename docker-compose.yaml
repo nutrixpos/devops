@@ -5,11 +5,12 @@ services:
       context: https://github.com/nutrixpos/posui.git#v0.1.2
       dockerfile: Dockerfile
       args:
-        VUE_APP_ZITADEL_ISSUER: http://zitadel:8080/
-        VUE_APP_BACKEND_HOST: localhost:8000
-        VUE_APP_MODULE_CORE_API_PREFIX: /core
-        VUE_APP_ZITADEL_PROJECT_RESOURCE_ID: ${VUE_APP_ZITADEL_PROJECT_RESOURCE_ID}
-        VUE_APP_ZITADEL_CLIENT_ID: ${VUE_APP_ZITADEL_CLIENT_ID}
+        VITE_APP_ZITADEL_ISSUER: ${VITE_APP_ZITADEL_ISSUER}
+        VITE_APP_BACKEND_HOST: ${VITE_APP_BACKEND_HOST}
+        VITE_APP_MODULE_CORE_API_PREFIX: ${VITE_APP_MODULE_CORE_API_PREFIX}
+        VITE_APP_ZITADEL_PROJECT_RESOURCE_ID: ${VITE_APP_ZITADEL_PROJECT_RESOURCE_ID}
+        VITE_APP_ZITADEL_CLIENT_ID: ${VITE_APP_ZITADEL_CLIENT_ID}
+        VITE_APP_ZITADEL_ENABLED: ${VITE_APP_ZITADEL_ENABLED}
 
     ports:
       - "3000:80"
@@ -20,7 +21,7 @@ services:
 
   pos:
     build:
-      context: https://github.com/nutrixpos/pos.git#v0.0.24
+      context: https://github.com/nutrixpos/pos.git#v0.0.25
       dockerfile: Dockerfile  # Specify the Dockerfile if it's not named 'Dockerfile'
     ports:
       - "8000:8000"  # Map ports accordingly
