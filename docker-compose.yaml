@@ -2,7 +2,7 @@ services:
 
   posui:
     build:
-      context: https://github.com/nutrixpos/posui.git#v0.1.5
+      context: https://github.com/nutrixpos/posui.git#v0.1.6
       dockerfile: Dockerfile
       args:
         VITE_APP_ZITADEL_ISSUER: ${VITE_APP_ZITADEL_ISSUER}
