@@ -1,0 +1,69 @@
+version: '3'
+
+tasks:
+
+  pre-up:
+    cmds:
+      - |
+        {{- if eq OS "windows" -}}
+          task pre-up-windows
+        {{- else -}}
+          task pre-up-linux
+        {{- end -}}
+
+
+
+  pre-up-linux:
+    desc: "Prepare environment before starting the app"
+    cmds:
+      - echo "Running pre-up script unix ..."
+      - |
+        if [ -f .env ]; then
+          GIT_COMMIT=$(git rev-parse --short HEAD || echo "unknown")
+          if uname | grep -qi "darwin"; then
+            sed -i.bak "s/^VITE_APP_APP_VERSION=.*/VITE_APP_APP_VERSION=$GIT_COMMIT/" .env && rm -f .env.bak
+          else
+            sed -i "s/^VITE_APP_APP_VERSION=.*/VITE_APP_APP_VERSION=$GIT_COMMIT/" .env
+          fi
+          echo "Updated VITE_APP_APP_VERSION to $GIT_COMMIT in .env"
+        else
+          echo "Warning: .env file not found"
+          if [ -f .env.example ]; then
+            cp .env.example .env
+            GIT_COMMIT=$(git rev-parse --short HEAD || echo "unknown")
+            if uname | grep -qi "darwin"; then
+              sed -i.bak "s/^VITE_APP_APP_VERSION=.*/VITE_APP_APP_VERSION=$GIT_COMMIT/" .env && rm -f .env.bak
+            else
+              sed -i "s/^VITE_APP_APP_VERSION=.*/VITE_APP_APP_VERSION=$GIT_COMMIT/" .env
+            fi
+            echo "Updated VITE_APP_APP_VERSION to $GIT_COMMIT in .env"
+          else
+            echo ".env.example not found. Cannot continue."
+            exit 1
+          fi
+        fi
+    silent: false
+
+  pre-up-windows:
+    desc: "Prepare environment before starting the app"
+    cmds:
+      - powershell -ExecutionPolicy Bypass -File ./install-windows.ps1
+
+  up:
+    desc: "Start docker compose"
+    cmds:
+      - task: pre-up
+      - docker compose up -d
+
+  down:
+    desc: "Stop docker compose"
+    cmds:
+      - docker compose down
+
+  update:
+    desc: "Update code and restart with rebuild"
+    cmds:
+      - task: down
+      - git pull
+      - task: pre-up
+      - docker compose up --build --force-recreate --no-deps -d

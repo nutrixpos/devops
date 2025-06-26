@@ -70,7 +70,7 @@ services:
       test: ["CMD", "curl", "-f", "http://zitadel:8080/healthz"]
       interval: 10s
       timeout: 5s
-      retries: 5
+      retries: 50
     command: >
       sh -c "while true; do
         echo 'Waiting for web-service to be healthy...';
