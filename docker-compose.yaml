@@ -2,7 +2,7 @@ services:
 
   posui:
     build:
-      context: https://github.com/nutrixpos/posui.git#v0.1.6
+      context: https://github.com/nutrixpos/posui.git#v0.1.7
       dockerfile: Dockerfile
       args:
         VITE_APP_ZITADEL_ISSUER: ${VITE_APP_ZITADEL_ISSUER}
@@ -11,6 +11,7 @@ services:
         VITE_APP_ZITADEL_PROJECT_RESOURCE_ID: ${VITE_APP_ZITADEL_PROJECT_RESOURCE_ID}
         VITE_APP_ZITADEL_CLIENT_ID: ${VITE_APP_ZITADEL_CLIENT_ID}
         VITE_APP_ZITADEL_ENABLED: ${VITE_APP_ZITADEL_ENABLED}
+        VITE_APP_APP_VERSION: ${VITE_APP_APP_VERSION}
 
     ports:
       - "3000:80"
