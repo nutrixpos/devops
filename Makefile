@@ -8,6 +8,11 @@ pre-up:
 		echo "Updated VITE_APP_APP_VERSION to $$GIT_COMMIT in .env"; \
 	else \
 		echo "Warning: .env file not found"; \
+		if [ -f .env.example ]; then \
+			cp .env.example .env; \
+		else \
+			exit 1; \
+		fi \
 	fi
 
 up: pre-up
