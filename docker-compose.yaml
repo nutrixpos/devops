@@ -41,6 +41,10 @@ services:
     volumes:
       # So that Traefik can listen to the Docker events
       - ./pos_mnt:/app/mnt
+    
+    extra_hosts:
+      - "nutrix-hub-api:host-gateway"
+
 
   nutrix-db:
     image: mongo:5.0

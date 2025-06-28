@@ -42,7 +42,7 @@ tasks:
             exit 1
           fi
         fi
-    silent: false
+    silent: true
 
   pre-up-windows:
     desc: "Prepare environment before starting the app"
