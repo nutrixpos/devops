@@ -44,6 +44,7 @@ services:
     
     extra_hosts:
       - "nutrix-hub-api:host-gateway"
+      - "zitadel:host-gateway"
 
 
   nutrix-db:
