@@ -2,7 +2,7 @@ services:
 
   posui:
     build:
-      context: https://github.com/nutrixpos/posui.git#v0.1.9
+      context: https://github.com/nutrixpos/posui.git#v0.2.0
       dockerfile: Dockerfile
       args:
         VITE_APP_ZITADEL_ISSUER: ${VITE_APP_ZITADEL_ISSUER}
@@ -22,7 +22,7 @@ services:
 
   pos:
     build:
-      context: https://github.com/nutrixpos/pos.git#v0.1.2
+      context: https://github.com/nutrixpos/pos.git#v0.2.0
       dockerfile: Dockerfile  # Specify the Dockerfile if it's not named 'Dockerfile'
     ports:
       - "8000:8000"  # Map ports accordingly
